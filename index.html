@@ -1,0 +1,41 @@
+<!doctype html>
+<html lang="zh-CN">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1,viewport-fit=cover">
+<title>工作台 · 本地 Notion 式工作台（数据只存在你的浏览器）</title>
+<meta name="description" content="文档、任务看板、轻量表格、页面树与全局搜索。纯前端，数据只存在浏览器本地，不上传，可导出备份，完全免费。">
+<meta name="theme-color" content="#071a22">
+<link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 32 32'%3E%3Crect width='32' height='32' rx='16' fill='%2300304a'/%3E%3Ctext x='16' y='23' font-size='19' text-anchor='middle' fill='%23f0efe9' font-family='serif'%3E台%3C/text%3E%3C/svg%3E">
+<link rel="stylesheet" href="style.css">
+</head>
+<body>
+<div id="app">
+  <aside id="side" aria-label="页面导航">
+    <div class="s-top">
+      <div class="brand"><span class="seal">台</span><b>工作台</b></div>
+      <button class="icon-btn s-close" id="s-close" aria-label="关闭侧栏" type="button">×</button>
+    </div>
+    <button class="s-search" id="s-search" type="button"><svg viewBox="0 0 24 24"><circle cx="11" cy="11" r="6.5"/><path d="m16 16 4.5 4.5"/></svg><span>搜索全部内容</span><kbd>Ctrl K</kbd></button>
+    <nav class="tree" id="tree" aria-label="项目空间与页面"></nav>
+    <div class="s-foot">
+      <button class="pill-s" id="b-new-space" type="button">＋ 新建项目空间</button>
+      <div class="s-actions"><button class="link-s" id="b-export" type="button">备份导出</button><button class="link-s" id="b-import" type="button">导入备份</button><button class="link-s" id="b-more" type="button">更多</button></div>
+      <p class="s-note" id="s-note"></p>
+    </div>
+  </aside>
+  <div id="scrim"></div>
+  <section id="main">
+    <header class="mbar"><button class="icon-btn" id="m-menu" aria-label="打开页面树" type="button"><svg viewBox="0 0 24 24"><path d="M4 7h16M4 12h16M4 17h16"/></svg></button><b class="m-title" id="m-title">工作台</b><button class="icon-btn" id="m-search" aria-label="搜索" type="button"><svg viewBox="0 0 24 24"><circle cx="11" cy="11" r="6.5"/><path d="m16 16 4.5 4.5"/></svg></button></header>
+    <div class="banner" id="banner" hidden></div>
+    <div id="head" class="phead"></div>
+    <div id="body" class="pbody"></div>
+  </section>
+</div>
+<input type="file" id="f-import" accept=".json,application/json,.md,.markdown,text/markdown,text/plain" hidden>
+<div id="modal-root"></div>
+<div class="toast" id="toast" role="status" hidden></div>
+<script src="vendor/jszip.min.js"></script>
+<script src="app.js"></script>
+</body>
+</html>
